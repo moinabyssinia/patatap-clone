@@ -7,14 +7,13 @@
     <link rel="stylesheet" type="text/css" href="circles.css">
     <script type="text/javascript" src="paper-full.js"></script>
     <script type="text/paperscript" canvas="myCanvas">
-        var width = view.size['width'];
-        var height = view.size['height'];
         function onKeyDown(event) {
-            var x = Math.random()*width;
-            var y = Math.random()*height;
-            new Path.Circle(new Point(x, y), 10).fillColor = 'orange';
+            var maxPoint = new Point(view.size.width, view.size.height);
+            console.log(maxPoint);
+            var randomPoint = Point.random();
+            var point = maxPoint * randomPoint;
+            new Path.Circle(point, 10).fillColor = "orange";
         }
-        //
     </script>
 </head>
 <body>
