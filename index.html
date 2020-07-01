@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="circles.css">
+    <script type="text/javascript" src="paper-full.js"></script>
+    <script type="text/paperscript" canvas="myCanvas">
+        var width = view.size['width'];
+        var height = view.size['height'];
+        function onKeyDown(event) {
+            var x = Math.random()*width;
+            var y = Math.random()*height;
+            new Path.Circle(new Point(x, y), 10).fillColor = 'orange';
+        }
+        //
+    </script>
+</head>
+<body>
+    <canvas id="myCanvas" resize></canvas>
+</body>
+</html> 
