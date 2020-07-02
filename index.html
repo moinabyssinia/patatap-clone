@@ -188,6 +188,13 @@
 			for(var i = 0; i < circles.length; i++){
 				circles[i].fillColor.hue += 1;
 				circles[i].scale(.9);
+				//remove circles when they are done
+				//to optimize the size of the circles array	
+				if(circles[i].area < 1){
+					circles[i].remove(); //remove from canvas
+					circles.splice(i, 1); //remove from array
+					console.log(circles);
+				}
 			}
 		}
 
