@@ -6,35 +6,47 @@
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="circles.css">
     <script type="text/javascript" src="paper-full.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.core.min.js"></script>
+
     <script type="text/paperscript" canvas="myCanvas">
         
+        //adding sounds
+        var sound = new Howl({
+            src: ['sounds/bubbles.mp3']
+          });
+          
+          //sound.play();
+          
         //make an array of circles
+        //to store each one and manipulate
         var circles = [];
         
         function onKeyDown(event) {
+            sound.play();
             var maxPoint = new Point(view.size.width, view.size.height);
             console.log(maxPoint);
             var randomPoint = Point.random();
             var point = maxPoint * randomPoint;
-            var newCircle = new Path.Circle(point, 100)
-            newCircle.fillColor = "orange";
+            var newCircle = new Path.Circle(point, 50)
+            //randomize the colors
+            newCircle.fillColor = "rgb("+colorGenerator()+","+colorGenerator()+","+colorGenerator()+")";
             circles.push(newCircle);
         }
         
-        //making animated circle
-        //var animatedCircle = new Path.Circle(new Point(300, 300), 100)
-        //animatedCircle.fillColor = "red";
-
+        //making animated circles
         function onFrame(event){
             for(var i = 0; i < circles.length; i++){
                 console.log(circles[i])
                 circles[i].fillColor.hue +=1; 
-                circles[i].scale(0.95);
+                //reduce its size in every frame
+                circles[i].scale(0.91);
             }
-            //animatedCircle.fillColor.hue +=1;
-            //reduce its size in every frame
-            //animatedCircle.scale(.92); 
         } 
+
+        //randomized color generator
+        function colorGenerator(){
+            return [Math.floor(Math.random()*255), Math.floor(Math.random()*255), Math.floor(Math.random()*255)];
+        }
 
     </script>
 </head>
